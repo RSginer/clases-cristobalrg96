@@ -1,8 +1,10 @@
 /**
  * Clase 1, 31/08/2018
  */
-
 // variables, funciones, closures
+'use strict';
+
+
 let vehiculo = {
     velocidad: 10
 }
@@ -28,6 +30,7 @@ conductor.frenar();
 
 console.log(vehiculo.velocidad);
 
+var nombre = 'Hola'
 
 // Objetos
 function Conductor(nombre, apellidos, edad, vehiculo) {
@@ -38,6 +41,7 @@ function Conductor(nombre, apellidos, edad, vehiculo) {
 }
 
 Conductor.prototype.acelerar = function (velocidad) {
+    console.log(this.vehiculo)
     this.vehiculo.velocidad += velocidad;
 }
 
@@ -95,8 +99,10 @@ function getPeliculas(count) {
 
     })
 }
+let peliculas;
 
 getPeliculas(0).then(function (response) {
+    peliculas = response;
     console.log(response);
     //
 }).catch(function (error) {
@@ -112,7 +118,7 @@ getPeliculas(1).then(function (response) {
 
 // Arrays y bucles
 
- let listaDeAmigos = [
+let listaDeAmigos = [
     'Ruben',
     'Cristobal',
     'Alvaro',
@@ -123,8 +129,41 @@ getPeliculas(1).then(function (response) {
 for (let i = 0; i < listaDeAmigos.length; i++) {
     let amigo = listaDeAmigos[i];
     console.log(amigo)
-} */
+} 
+
+*/
 
 listaDeAmigos.forEach(function (element, index, array) {
     console.log(element);
 });
+
+let cargando = true;
+
+while (cargando) {
+
+
+    //
+
+    cargando = false;
+
+}
+
+// Generators
+
+function* generarIds() {
+    let id = 0;
+    while (true) {
+        yield ++id;
+    }
+}
+
+const generadorDeIds = generarIds()
+
+generadorDeIds.next();
+generadorDeIds.next();
+console.log(generadorDeIds.next());
+
+for (id of generadorDeIds) {
+    console.log(id)
+}
+
