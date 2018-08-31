@@ -5,8 +5,6 @@
 /* function saludar() {
     console.log(this.name);
 }
-
-
 saludarARuben();
  */
 'use strict';
