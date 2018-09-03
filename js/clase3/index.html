@@ -3,9 +3,11 @@
 <head>
     <title>Prueba JS con DOM</title>
     <style>
-        html, body {
+        html,
+        body {
             font-family: Helvetica;
         }
+
         #app {
             width: 100%;
             height: 100%;
@@ -48,7 +50,7 @@
             tareaElement.innerHTML = tarea;
             var id = generadorDeIds.next();
             tareaElement.setAttribute('id', id);
-            
+
             var botonDelete = document.createElement('button');
             botonDelete.innerHTML = 'Eliminar tarea';
             botonDelete.addEventListener('click', deleteTarea(id));
@@ -74,18 +76,10 @@
             var editedId = id;
             return function () {
                 var element = document.getElementById(editedId);
-                var newElement = document.createElement('li');
-                newElement.setAttribute('id',editedId);
-
                 var nuevaTarea = prompt('Introduce el nombre de la nueva tarea');
-                var text = element.childNodes[0];
-                text = nuevaTarea;
-                
-                for (var i=0; i<element.childNodes.length; i++) {
-                    var childNode = element.childNodes[i];
-                    newElement.appendChild(childNode);
-                }
-                list.replaceChild(newElement, element);
+                newText = document.createTextNode(nuevaTarea);
+                element.replaceChild(newText, element.childNodes[0];
+
             }
         }
 
