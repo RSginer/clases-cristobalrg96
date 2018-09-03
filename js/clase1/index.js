@@ -103,6 +103,8 @@ let peliculas;
 
 getPeliculas(0).then(function (response) {
     peliculas = response;
+
+    
     console.log(response);
     //
 }).catch(function (error) {

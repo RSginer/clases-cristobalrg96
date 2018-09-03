@@ -1,0 +1,58 @@
+<html>
+
+<head>
+    <title>Prueba JS con DOM</title>
+    <style>
+        html, body {
+            font-family: Helvetica;
+        }
+        #app {
+            width: 100%;
+            height: 100%;
+            background: #f9f9f9;
+        }
+
+        li {
+            font-family: Helvetica;
+            margin-top: 10px;
+        }
+
+        button {
+            background: #00aaff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="contenedor" nombre="ruben" id="app">
+        <ul class="listado-tareas">
+            <li>Hacer la cama</li>
+            <li>Fregar los platos</li>
+            <li>Quedar con los colegas</li>
+        </ul>
+    </div>
+
+    <script>
+        var appContainer = document.getElementById('app');
+        var list = document.getElementsByClassName('listado-tareas')[0];
+        var botonAddTarea = document.createElement('button');
+        botonAddTarea.innerHTML = 'Añadir tarea';
+        appContainer.appendChild(botonAddTarea);
+
+        function addTarea(evt, el) {
+            var tarea = prompt('Introduce el nombre de la tarea');
+            var tareaElement = document.createElement('li');
+            tareaElement.innerHTML = tarea;
+            list.appendChild(tareaElement)
+        }
+
+        botonAddTarea.addEventListener('click', addTarea)
+
+    </script>
+</body>
+
+</html>
