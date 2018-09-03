@@ -48,7 +48,7 @@
             var tarea = prompt('Introduce el nombre de la tarea');
             var tareaElement = document.createElement('li');
             tareaElement.innerHTML = tarea;
-            var id = generadorDeIds.next();
+            var id = generadorDeIds.next().value;
             tareaElement.setAttribute('id', id);
 
             var botonDelete = document.createElement('button');
