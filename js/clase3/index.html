@@ -30,9 +30,6 @@
 <body>
     <div class="contenedor" nombre="ruben" id="app">
         <ul class="listado-tareas">
-            <li>Hacer la cama</li>
-            <li>Fregar los platos</li>
-            <li>Quedar con los colegas</li>
         </ul>
     </div>
 
@@ -42,12 +39,61 @@
         var botonAddTarea = document.createElement('button');
         botonAddTarea.innerHTML = 'Añadir tarea';
         appContainer.appendChild(botonAddTarea);
+        var generadorDeIds = generarIds()
+
 
         function addTarea(evt, el) {
             var tarea = prompt('Introduce el nombre de la tarea');
             var tareaElement = document.createElement('li');
             tareaElement.innerHTML = tarea;
-            list.appendChild(tareaElement)
+            var id = generadorDeIds.next();
+            tareaElement.setAttribute('id', id);
+            
+            var botonDelete = document.createElement('button');
+            botonDelete.innerHTML = 'Eliminar tarea';
+            botonDelete.addEventListener('click', deleteTarea(id));
+
+            var botonEdit = document.createElement('button');
+            botonEdit.innerHTML = 'Editar tarea';
+            botonEdit.addEventListener('click', editTarea(id));
+
+            tareaElement.appendChild(botonDelete);
+            tareaElement.appendChild(botonEdit);
+            list.appendChild(tareaElement);
+        }
+
+        function deleteTarea(id) {
+            var deletedId = id;
+            return function () {
+                var element = document.getElementById(deletedId);
+                element.parentNode.removeChild(element);
+            }
+        }
+
+        function editTarea(id) {
+            var editedId = id;
+            return function () {
+                var element = document.getElementById(editedId);
+                var newElement = document.createElement('li');
+                newElement.setAttribute('id',editedId);
+
+                var nuevaTarea = prompt('Introduce el nombre de la nueva tarea');
+                var text = element.childNodes[0];
+                text = nuevaTarea;
+                
+                for (var i=0; i<element.childNodes.length; i++) {
+                    var childNode = element.childNodes[i];
+                    newElement.appendChild(childNode);
+                }
+                list.replaceChild(newElement, element);
+            }
+        }
+
+        function* generarIds() {
+            let id = 0;
+            while (true) {
+                yield ++id;
+            }
         }
 
         botonAddTarea.addEventListener('click', addTarea)
