@@ -1,0 +1,61 @@
+html, body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+header {
+    background: deepskyblue;
+    padding: 20px;
+}
+
+button.menu-button {
+    padding: 10px;
+    background: transparent;
+    border: 1px solid white;
+    border-radius: 4px;
+    color: white;
+}
+
+.left-menu {
+    position: absolute;
+    background: deepskyblue;
+    color: white;
+    padding: 20px;
+    left: -100%;
+}
+
+.left-menu.open {
+    left: 8px;
+}
+
+.left-menu ul {
+    list-style: none;
+    padding-left: 0px;
+}
+
+.left-menu ul li {
+    padding: 5px;
+    text-align: center;
+}
+
+.container {
+    width: 900px;
+    margin: 0 auto;
+    margin-top: 60px;
+}
+
+/* Tasks */
+
+.tasks-add-button {
+    padding: 10px;
+    background: transparent;
+    border: 1px solid deepskyblue;
+    border-radius: 4px;
+    color: deepskyblue;
+    
+}
+
+.tasks-add-button:hover {
+    background: deepskyblue;
+    color: white;
+    cursor: pointer;
+}
