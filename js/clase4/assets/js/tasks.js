@@ -5,12 +5,13 @@ $(document).ready(function () {
         Elements
     */
     var $tasksList = $('#tasks-list');
+    var generadorDeIds = generarIds();
 
 
     /* Events */
     $('#add-task').on('click', function () {
 
-        var id = generarIds().next().value;
+        var id = generadorDeIds.next().value;
 
         var text = prompt('Introduce un nombre a la tarea');
 
@@ -30,16 +31,25 @@ $(document).ready(function () {
     })
 });
 
-function deleteTask(id) {
-    return function () {
 
+function deleteTask(id) {
+    var deletedId = id;
+    return function () {
+        $('#'+deletedId).remove();
     }
 }
 
 
 function editTask(id) {
-    return function () {
+    var editedId = id;
 
+    return function () {
+        var $task = $('#'+editedId);
+        var nuevaTarea = prompt('Introduce el nombre de la nueva tarea');
+
+        var $children = $task.children();
+        $task.text(nuevaTarea);
+        $task.append($children);
     }
 }
 
