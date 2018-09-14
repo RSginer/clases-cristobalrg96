@@ -46,10 +46,7 @@ function editTask(id) {
     return function () {
         var $task = $('#'+editedId);
         var nuevaTarea = prompt('Introduce el nombre de la nueva tarea');
-
-        var $children = $task.children();
-        $task.text(nuevaTarea);
-        $task.append($children);
+        $task.contents()[0].replaceWith(nuevaTarea);
     }
 }
 
